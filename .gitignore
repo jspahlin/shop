@@ -74,7 +74,6 @@ node_modules/
 typescript/
 package-lock.json
 
-angular/
 bstore/
 
 target/
