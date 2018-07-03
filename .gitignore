@@ -77,3 +77,4 @@ package-lock.json
 bstore/
 
 target/
+src/main/resources/hibernate.cfg.xml
