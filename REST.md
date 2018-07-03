@@ -22,3 +22,13 @@ GET	/cart - list all items in current session user's cart.
 POST	/cart - Add a single invoiceline to the cart.
 DELETE	/cart - Remove a single invoiceline (by it's id) from the cart.
 UPDATE	/cart - Change the amount of an item in an invoice line that's in the cart.
+
+GET	/card/color - list of all card colors
+
+GET	/card/type - list of all card types
+
+GET	/card/rarity - list of all rarities
+
+GET	/card/Set - list of all card sets
+
+GET	/card/creature_type - list of all creature types.

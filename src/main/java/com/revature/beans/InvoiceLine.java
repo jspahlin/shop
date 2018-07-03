@@ -18,6 +18,7 @@ public class InvoiceLine {
 	private Card card;
 	private int quantity;
 	// invoice id call
+	@Column(name="invoice")
 	private Invoice invoice;
 	
 	public Card getCard() {
@@ -38,7 +39,7 @@ public class InvoiceLine {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Invoice getInvoice() {
+	public Invoice getInvoiceId() {
 		return invoice;
 	}
 	public void setInvoice(Invoice invoice) {

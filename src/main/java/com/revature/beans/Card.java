@@ -28,11 +28,11 @@ public class Card {
 	private int convertedManaCost;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="card_rarity.id")
+	@JoinColumn(name="card_rarity_id")
 	private CardRarity rarity;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="card_set.id")
+	@JoinColumn(name="card_set_id")
 	private CardSet set;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
