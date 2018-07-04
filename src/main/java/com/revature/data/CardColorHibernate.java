@@ -1,12 +1,9 @@
 package com.revature.data;
 
 import java.util.List;
-import java.util.Set;
-
 import org.hibernate.Session;
 
 import com.revature.beans.CardColor;
-import com.revature.beans.InvoiceLine;
 
 public class CardColorHibernate implements CardColorDao, HibernateSession {
 	private Session session;

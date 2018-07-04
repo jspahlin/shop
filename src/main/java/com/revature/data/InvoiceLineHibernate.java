@@ -37,7 +37,7 @@ public class InvoiceLineHibernate implements InvoiceLineDao, HibernateSession {
 
 	@Override
 	public List<InvoiceLine> list() {
-		return (List<InvoiceLine>) session.createQuery("From com.revature.beans.CardRarity", InvoiceLine.class).list();
+		return (List<InvoiceLine>) session.createQuery("From com.revature.beans.InvoiceLine", InvoiceLine.class).list();
 	}
 
 	@Override
