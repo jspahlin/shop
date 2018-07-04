@@ -18,7 +18,7 @@ public class CardSetHibernate implements CardSetDao, HibernateSession {
 
 	@Override
 	public CardSet get(int id) {
-		return (CardSet) session.get(CardSet.class, id);
+		return session.get(CardSet.class, id);
 
 	}
 
@@ -36,7 +36,7 @@ public class CardSetHibernate implements CardSetDao, HibernateSession {
 
 	@Override
 	public void delete(CardSet set) {
-		session.update(set);
+		session.delete(set);
 
 	}
 
