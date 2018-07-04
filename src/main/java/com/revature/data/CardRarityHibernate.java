@@ -22,7 +22,6 @@ public class CardRarityHibernate implements CardRarityDao, HibernateSession {
 
 	@Override
 	public CardRarity save(CardRarity rarity) {
-		System.out.println(rarity);
 		session.save(rarity);
 		return rarity;
 	}
