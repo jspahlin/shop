@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "e24354af-9d49-4673-aedb-1186f3f1c0bd",
+		"name": "Shoptest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Simple Login Should fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ba9b147-fd2a-40cf-954b-f6fd7c7845c7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"test\", \"pass\": \"no\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/magic-shop/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"magic-shop",
+						"login"
+					]
+				},
+				"description": "Try to login with a user that does not exist in the db\n\nShould 401."
+			},
+			"response": []
+		},
+		{
+			"name": "Getting session without login should fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ba9b147-fd2a-40cf-954b-f6fd7c7845c7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"test\", \"pass\": \"no\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/magic-shop/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"magic-shop",
+						"login"
+					]
+				},
+				"description": "Try to login with a user that does not exist in the db\n\nShould 401."
+			},
+			"response": []
+		},
+		{
+			"name": "Unlogged in user fails to load a resource",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": "The pointcut in AuthAspect should prevent access to any server resources without a valid login.\t"
+			},
+			"response": []
+		}
+	]
+}
