@@ -26,11 +26,10 @@ public class AuthAspect {
 	// make sure we are logged in or return unauthorized errors.
 	@Around("routedFunctions()") 
 	public Object forceLogin(ProceedingJoinPoint pjp) throws Throwable {
-		System.out.println("HERERERERE");
 		Object obj = null;
 		Login user = (Login) httpsession.getAttribute("currentUser");
 		try {
-			if(user != null) {
+			if(user == null) {
 				throw new UnauthorizedException();
 			} else {
 				obj = pjp.proceed();
@@ -41,6 +40,6 @@ public class AuthAspect {
 		return obj;
 	}
 	
-	@Pointcut("execution(* com.revature.controller..*(..))") // && !execution(* com.revature.controller.ErrorController.*(..))
+	@Pointcut("execution(* com.revature.controller..*(..)) && !execution(* com.revature.controller.LoginController..*(..))") // && !execution(* com.revature.controller.ErrorController.*(..))
 	public void routedFunctions() { }
 }

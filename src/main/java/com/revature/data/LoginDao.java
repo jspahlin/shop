@@ -11,7 +11,6 @@ public interface LoginDao {
 	public Login update(Login user);
 	public void delete(Login user);
 	public List<Login> list();
-		
 }
 
 	
