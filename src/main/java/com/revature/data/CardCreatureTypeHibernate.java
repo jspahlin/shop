@@ -3,9 +3,11 @@ package com.revature.data;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardCreatureType;
 
+@Component
 public class CardCreatureTypeHibernate implements CardCreatureTypeDao, HibernateSession {
 	private Session session;
 	

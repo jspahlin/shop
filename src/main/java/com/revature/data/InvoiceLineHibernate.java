@@ -1,16 +1,14 @@
 package com.revature.data;
 
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
-import com.revature.beans.CardRarity;
-import com.revature.beans.CardType;
-import com.revature.beans.Invoice;
 import com.revature.beans.InvoiceLine;
 
+@Component
 public class InvoiceLineHibernate implements InvoiceLineDao, HibernateSession {
 	private Session session;
 	@Override

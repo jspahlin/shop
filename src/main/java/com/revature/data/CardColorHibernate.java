@@ -1,10 +1,13 @@
 package com.revature.data;
 
 import java.util.List;
+
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardColor;
 
+@Component
 public class CardColorHibernate implements CardColorDao, HibernateSession {
 	private Session session;
 	@Override
