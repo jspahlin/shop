@@ -1,12 +1,12 @@
 package com.revature.data;
 
-import java.util.Set;
+import java.util.List;
 
 import com.revature.beans.CardColor;
 
 public interface CardColorDao {
 	public CardColor get(int id);
-	public CardColor insert(CardColor color);
-	public boolean update(CardColor color);
-	public Set<CardColor> list();
+	public CardColor save(CardColor color);
+	public CardColor update(CardColor color);
+	public List<CardColor> list();
 }

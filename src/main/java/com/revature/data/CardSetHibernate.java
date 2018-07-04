@@ -39,7 +39,7 @@ public class CardSetHibernate implements CardSetDao, HibernateSession {
 
 	@Override
 	public List<CardSet> list() {
-		return (List<CardSet>) session.createQuery("From com.revature.beans.CardType", CardSet.class).list();
+		return (List<CardSet>) session.createQuery("From com.revature.beans.CardSet", CardSet.class).list();
 	}
 
 }
