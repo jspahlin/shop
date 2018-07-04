@@ -1,10 +1,13 @@
 package com.revature.data;
 
 import java.util.List;
+
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardSet;
 
+@Component
 public class CardSetHibernate implements CardSetDao, HibernateSession {
 	private Session session;
 
