@@ -1,7 +1,6 @@
 package com.revature.data;
 
-import java.util.Set;
-
+import java.util.List;
 import com.revature.beans.CardType;
 
 public interface CardTypeDao {
@@ -9,5 +8,5 @@ public interface CardTypeDao {
 	public CardType save(CardType type);
 	public CardType update(CardType type);
 	public void delete(CardType type);
-	public Set<CardType> list();
+	public List<CardType> list();
 }
