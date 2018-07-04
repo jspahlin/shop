@@ -7,6 +7,8 @@ import static org.junit.Assert.assertNull;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.revature.beans.CardSet;
@@ -15,18 +17,32 @@ import com.revature.utils.HibernateUtil;
 
 
 public class CardSetDaoTest {
-	
-	@Test
-	public void simpleDaoFunctions() {
-		HibernateUtil hu = new HibernateUtil();
-		Session session = hu.getSession();
-        Transaction tx = session.beginTransaction();
-        
-        
-		CardSetHibernate o = new CardSetHibernate();
+	HibernateUtil hu;
+	Session session;
+    Transaction tx;
+	CardSetHibernate o;
+	@Before
+	public void setup() {
+		hu = new HibernateUtil();
+		session = hu.getSession();
+		tx = session.beginTransaction();
+		o = new CardSetHibernate();
 		o.setSession(session);
 		
-		assertNull(o.get(1000000));
+	}
+	@After
+	public void tearDown() {
+		tx.rollback();
+		session.close();		
+		
+		hu = null;
+		session = null;
+		tx = null;
+		o = null;
+	}
+	@Test
+	public void simpleDaoFunctions() {
+		
 		
 		CardSet test = new CardSet(0, "TEST"); // transient
 		CardSet testResult = o.save(test);
@@ -49,8 +65,11 @@ public class CardSetDaoTest {
 		
 		o.delete(testResult);
 		
-		tx.rollback();
 		assertEquals(size-1, o.list().size());
-		session.close();		
+	}
+	
+	@Test
+	public void getNonExistantObjectIsNull () {
+		assertNull(o.get(1000000));
 	}
 }
