@@ -27,7 +27,7 @@ public class HibernateAspect {
 
         private static Logger log = Logger.getLogger(HibernateAspect.class.toString());
         public HibernateAspect() {
-        	System.out.println("Created a HibernateAspect!");
+        	log.trace("Created a HibernateAspect!");
         }
         @Around("allDaoObject()")
         public Object manageSession(ProceedingJoinPoint pjp) throws Throwable {
@@ -62,5 +62,5 @@ public class HibernateAspect {
         }
 
         @Pointcut("execution(* com.revature.data..*(..)) && !execution(* com.revature.data..setSession(..))")
-        public void allDaoObject() { System.out.println("here");}
+        public void allDaoObject() { /* hook function */ }
 }

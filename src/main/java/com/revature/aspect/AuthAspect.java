@@ -26,27 +26,21 @@ public class AuthAspect {
 	HttpSession httpsession;
 	
 	public AuthAspect () {
-		System.out.println("created a authaspect");
+		log.trace("created a authaspect");
 	}
 	// make sure we are logged in or return unauthorized errors.
 	@Around("routedFunctions()") 
 	public Object forceLogin(ProceedingJoinPoint pjp) throws Throwable {
 		Object obj = null;
 		Login user = (Login) httpsession.getAttribute("currentUser");
-		try {
-			if(user == null) {
-				throw new UnauthorizedException();
-			} else {
-				
-				log.trace("AuthAspect");
-				obj = pjp.proceed();
-			}
-		} catch (Throwable e) {
-			throw e;
+		if(user == null) {
+			throw new UnauthorizedException();
+		} else {			
+			obj = pjp.proceed();
 		}
 		return obj;
 	}
 	
 	@Pointcut("execution(* com.revature.controller..*(..)) && !execution(* com.revature.controller.LoginController..*(..))") // && !execution(* com.revature.controller.ErrorController.*(..))
-	public void routedFunctions() { }
+	public void routedFunctions() { /* hook function */ } // could probably be remvoved if we only have the one forceLogin.
 }

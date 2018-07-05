@@ -14,12 +14,10 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(2)
 public class LoggingAspect {
-        private Logger log;
-
         @Around("everything()")
         public Object log(ProceedingJoinPoint pjp) {
                 Object obj = null;
-                log = Logger.getLogger(pjp.getTarget().getClass());
+                Logger log = Logger.getLogger(pjp.getTarget().getClass());
                 log.trace("Method with signature: "+pjp.getSignature());
                 log.trace("With arguments: "+Arrays.toString(pjp.getArgs()));
 
