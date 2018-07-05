@@ -5,49 +5,19 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import com.revature.beans.CardSet;
-import com.revature.utils.HibernateUtil;
 
-
-
-public class CardSetDaoTest {
-	HibernateUtil hu;
-	Session session;
-    Transaction tx;
-	CardSetHibernate o;
-	@Before
-	public void setup() {
-		hu = new HibernateUtil();
-		session = hu.getSession();
-		tx = session.beginTransaction();
-		o = new CardSetHibernate();
-		o.setSession(session);
-		
-	}
-	@After
-	public void tearDown() {
-		tx.rollback();
-		session.close();		
-		
-		hu = null;
-		session = null;
-		tx = null;
-		o = null;
-	}
+public class CardSetDaoTest extends DaoTest {
+	{ o = new CardSetHibernate(); }
 	@Test
 	public void simpleDaoFunctions() {
-		
+		CardSetHibernate o = (CardSetHibernate) this.o;
 		
 		CardSet test = new CardSet(0, "TEST"); // transient
 		CardSet testResult = o.save(test);
 		
-
 		assertNotNull(testResult); // making sure that saving an object actually creates an object in the db.
 		assertNotEquals(0, testResult.getId()); // Id needs to be non-zero for it to be persistant.
 		
@@ -70,6 +40,7 @@ public class CardSetDaoTest {
 	
 	@Test
 	public void getNonExistantObjectIsNull () {
+		CardSetHibernate o = (CardSetHibernate) this.o;
 		assertNull(o.get(1000000));
 	}
 }

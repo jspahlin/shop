@@ -30,11 +30,11 @@ public class Customer extends Login {
 		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
 	}
-
 	@Override
 	public String toString() {
-		return "Customer [billingAddress=" + billingAddress + ", shippingAddress=" + shippingAddress + "]";
+		return "Customer [billingAddress=" + billingAddress + ", shippingAddress=" + shippingAddress + ", getId()="
+				+ getId() + ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getEmail()="
+				+ getEmail() + ", getClass()=" + getClass() + "]";
 	}
-	
 	
 }
