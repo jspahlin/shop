@@ -42,5 +42,5 @@ public class AuthAspect {
 	}
 	
 	@Pointcut("execution(* com.revature.controller..*(..)) && !execution(* com.revature.controller.LoginController..*(..))") // && !execution(* com.revature.controller.ErrorController.*(..))
-	public void routedFunctions() { /* hook function */ } // could probably be remvoved if we only have the one forceLogin.
+	public void routedFunctions() { /* hook function */ } 
 }

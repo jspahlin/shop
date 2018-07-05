@@ -10,6 +10,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.revature.exceptions.UnauthorizedException;
+
 @Component
 @Aspect
 @Order(2)
@@ -23,6 +25,8 @@ public class LoggingAspect {
 
                 try {
                         obj = pjp.proceed();
+                } catch(UnauthorizedException e) {
+                	throw e;
                 } catch (Throwable e) {
                         log.error(e.getMessage());
                         for(StackTraceElement s : e.getStackTrace()) {
