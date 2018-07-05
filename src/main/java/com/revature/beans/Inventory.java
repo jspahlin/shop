@@ -32,7 +32,6 @@ public void setAmountSold(int amountSold) {
 }
 public Inventory() {
 	super();
-	// TODO Auto-generated constructor stub
 }
 public Inventory(Card card, int id, int quantity, int amountSold) {
 	super();
