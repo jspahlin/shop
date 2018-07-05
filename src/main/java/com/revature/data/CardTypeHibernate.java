@@ -32,7 +32,7 @@ public class CardTypeHibernate implements CardTypeDao, HibernateSession {
 
 	@Override
 	public void delete(CardType type) {
-		session.update(type);
+		session.delete(type);
 	}
 
 	@Override
