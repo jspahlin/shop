@@ -32,6 +32,11 @@ public class InvoiceLineHibernate implements InvoiceLineDao, HibernateSession {
 		session.save(invoiceline);
 		return invoiceline;
 	}
+	
+	@Override
+	public void delete(InvoiceLine invoiceline) {
+		session.delete(invoiceline);
+	}
 
 	@Override
 	public List<InvoiceLine> list() {
