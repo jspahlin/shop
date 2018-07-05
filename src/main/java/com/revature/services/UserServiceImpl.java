@@ -23,5 +23,9 @@ public class UserServiceImpl implements UserService {
 		return ld.save(login);
 	}
 
+	@Override
+	public Login update(Login login) {
+		return ld.update(login);
+	}
 	
 }

@@ -19,7 +19,7 @@ public class CardColorController {
 	@RequestMapping(value="/card/color", method=RequestMethod.GET)
 	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
-	public String adminGetColorType() throws JsonProcessingException {
+	public String getColorType() throws JsonProcessingException {
 		return om.writeValueAsString(ccd.list());
 	}
 }

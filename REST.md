@@ -17,8 +17,9 @@ xGET	/login/ - current session
 xPOST	/login/ - log in a user given username/pass
 
 xPOST	/account/login - create an account (not a customer)
-PUT	/account/login - update an account into a customer.
-PUT	/account/customer - update an account into an employee.
+xPUT	/account/login - update an account into a customer.
+	BODY {"billingAddress": "blah", "shippingAddress": "blah"}
+PUT	/account/employee - update an account into an employee.
 PUT	/account/admin - update an account into an admin.
 
 GET	/cart - list all items in current session user's cart.

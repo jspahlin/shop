@@ -25,6 +25,10 @@ public class Customer extends Login {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public Customer(Login l) {
+		super(l.getId(),l.getUsername(),l.getPassword(),l.getEmail());
+		
+	}
 	public Customer(int id, String username, String password, String email, String billingAddress, String shippingAddress) {
 		super(id, username, password, email);
 		this.billingAddress = billingAddress;
