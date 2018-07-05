@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +42,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String doLogin(@RequestBody UserPass up, HttpSession httpSession,
 			HttpServletResponse response) throws JsonProcessingException {
@@ -55,6 +57,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
+	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getSession(HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute("currentUser");
@@ -67,6 +70,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/account/new/login")
+	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String makeNewAccount(@RequestBody Login login, HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute("currentUser");
