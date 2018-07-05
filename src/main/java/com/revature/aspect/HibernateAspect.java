@@ -1,5 +1,10 @@
 package com.revature.aspect;
 
+
+
+import javax.persistence.PersistenceException;
+
+import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -7,6 +12,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.revature.data.HibernateSession;
@@ -14,10 +20,12 @@ import com.revature.utils.HibernateUtil;
 
 @Component
 @Aspect
+@Order(100)
 public class HibernateAspect {
         @Autowired
         private HibernateUtil hu;
 
+        private static Logger log = Logger.getLogger(HibernateAspect.class.toString());
         public HibernateAspect() {
         	System.out.println("Created a HibernateAspect!");
         }
@@ -32,8 +40,18 @@ public class HibernateAspect {
                 hs.setSession(session);
                 try {
                         obj = pjp.proceed();
-                } catch (Throwable e) {
+                        log.info(pjp.getClass().getName());
+                        log.info("flushing...");
+                        session.flush();
+                } catch (PersistenceException e) {
+                	tx.rollback();
+                	session.close();
+                	hs.setSession(null);
+                	return null;
+                } catch (Error|Exception e) {
                         tx.rollback();
+                        session.close();
+                        hs.setSession(null);
                         throw e;
                 }
                 tx.commit();

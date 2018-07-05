@@ -1,13 +1,17 @@
 package com.revature.aspect;
 
 
+
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Login;
@@ -15,8 +19,9 @@ import com.revature.exceptions.UnauthorizedException;
 
 @Component
 @Aspect
+@Order(10)
 public class AuthAspect {
-	
+	private static Logger log = Logger.getLogger(HibernateAspect.class.toString());
 	@Autowired
 	HttpSession httpsession;
 	
@@ -32,6 +37,8 @@ public class AuthAspect {
 			if(user == null) {
 				throw new UnauthorizedException();
 			} else {
+				
+				log.trace("AuthAspect");
 				obj = pjp.proceed();
 			}
 		} catch (Throwable e) {

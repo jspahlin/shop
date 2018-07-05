@@ -75,11 +75,11 @@ public class LoginController {
 			return "";
 		} else {
 			Login newLogin = us.addUser(login);
-			if(login==null) {
+			if(newLogin==null) {
 				response.setStatus(HttpServletResponse.SC_CONFLICT);
 				return "";
 			}
-			return om.writeValueAsString(new UserAndRole(login));
+			return om.writeValueAsString(new UserAndRole(newLogin));
 		}
 	}
 }

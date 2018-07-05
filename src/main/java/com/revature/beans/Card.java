@@ -35,6 +35,7 @@ public class Card {
 	@JoinColumn(name="card_set_id")
 	private CardSet set;
 	
+	@Column(name="card_color")
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="card_color_card",
 			joinColumns=@JoinColumn(name="card_id"),

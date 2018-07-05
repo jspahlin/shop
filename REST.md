@@ -16,7 +16,10 @@ PUT	/employee/ - Update an employee
 xGET	/login/ - current session
 xPOST	/login/ - log in a user given username/pass
 
-POST	/account/new - create an account
+xPOST	/account/login - create an account (not a customer)
+PUT	/account/login - update an account into a customer.
+PUT	/account/customer - update an account into an employee.
+PUT	/account/admin - update an account into an admin.
 
 GET	/cart - list all items in current session user's cart.
 POST	/cart - Add a single invoiceline to the cart.

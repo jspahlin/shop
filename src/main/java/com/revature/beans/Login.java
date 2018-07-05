@@ -9,9 +9,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="login")
+@Table(name="login", uniqueConstraints = {@UniqueConstraint(columnNames={"username"})})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Login {
 	@Id
@@ -21,6 +22,7 @@ public class Login {
 	private int id;
 	@Column(unique=true)
 	private String username;
+	@Column(name="pass")
 	private String password;
 	private String email;
 	public Login() {
@@ -62,12 +64,10 @@ public class Login {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -77,18 +77,6 @@ public class Login {
 		if (getClass() != obj.getClass())
 			return false;
 		Login other = (Login) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id != other.id)
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;

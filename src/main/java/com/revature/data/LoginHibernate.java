@@ -1,7 +1,9 @@
 package com.revature.data;
 
+import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
@@ -30,7 +32,7 @@ public class LoginHibernate implements LoginDao, HibernateSession {
 	}
 
 	@Override
-	public Login save(Login user) {
+	public Login save(Login user) { // TODO: FIGURE OUT WHY HIBERNATE WILL NOT RESPECT CONSTRAINTS!!!!!!!
 		session.save(user);
 		return user;
 	}
