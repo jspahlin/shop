@@ -18,5 +18,10 @@ public class UserServiceImpl implements UserService {
 		
 		return user;
 	}
+	@Override
+	public Login addUser(Login login) {
+		return ld.save(login);
+	}
 
+	
 }

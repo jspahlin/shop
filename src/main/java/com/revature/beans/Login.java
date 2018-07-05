@@ -19,6 +19,7 @@ public class Login {
 	@SequenceGenerator(name="login_gen", sequenceName="login_seq", allocationSize=1)
     @GeneratedValue(generator="login_gen", strategy=GenerationType.SEQUENCE)
 	private int id;
+	@Column(unique=true)
 	private String username;
 	private String password;
 	private String email;

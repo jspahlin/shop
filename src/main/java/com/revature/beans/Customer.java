@@ -7,13 +7,13 @@ import javax.persistence.Entity;
 public class Customer extends Login {
 	// Customer specific fields
 	@Column
-	private String billingAdress;
+	private String billingAddress;
 	private String shippingAddress;
 	public String getBillingAdress() {
-		return billingAdress;
+		return billingAddress;
 	}
 	public void setBillingAdress(String billingAdress) {
-		this.billingAdress = billingAdress;
+		this.billingAddress = billingAdress;
 	}
 	public String getShippingAddress() {
 		return shippingAddress;
@@ -25,20 +25,17 @@ public class Customer extends Login {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Customer(int id, String username, String password, String email) {
+	public Customer(int id, String username, String password, String email, String billingAddress, String shippingAddress) {
 		super(id, username, password, email);
-		// TODO Auto-generated constructor stub
-	}
-	public Customer(String billingAdress, String shippingAddress) {
-		super();
-		this.billingAdress = billingAdress;
+		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((billingAdress == null) ? 0 : billingAdress.hashCode());
+		result = prime * result + ((billingAddress == null) ? 0 : billingAddress.hashCode());
 		result = prime * result + ((shippingAddress == null) ? 0 : shippingAddress.hashCode());
 		return result;
 	}
@@ -51,10 +48,10 @@ public class Customer extends Login {
 		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		if (billingAdress == null) {
-			if (other.billingAdress != null)
+		if (billingAddress == null) {
+			if (other.billingAddress != null)
 				return false;
-		} else if (!billingAdress.equals(other.billingAdress))
+		} else if (!billingAddress.equals(other.billingAddress))
 			return false;
 		if (shippingAddress == null) {
 			if (other.shippingAddress != null)
@@ -65,7 +62,7 @@ public class Customer extends Login {
 	}
 	@Override
 	public String toString() {
-		return "Customer [billingAdress=" + billingAdress + ", shippingAddress=" + shippingAddress + "]";
+		return "Customer [billingAddress=" + billingAddress + ", shippingAddress=" + shippingAddress + "]";
 	}
 	
 	

@@ -4,4 +4,5 @@ import com.revature.beans.Login;
 
 public interface UserService {
 	public Login login(String user, String pass);
+	public Login addUser(Login login);
 }

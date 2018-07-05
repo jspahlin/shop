@@ -2,9 +2,12 @@ package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -15,10 +18,13 @@ public class InvoiceLine {
     @GeneratedValue(generator="invoice_line_gen", strategy=GenerationType.SEQUENCE)
 	// id for invoice line
 	private int id;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="card_id")
 	private Card card;
 	private int quantity;
 	// invoice id call
-	@Column(name="invoice")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="invoice_id")
 	private Invoice invoice;
 	
 	public Card getCard() {
