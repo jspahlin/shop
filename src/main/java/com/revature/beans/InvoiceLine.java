@@ -27,6 +27,9 @@ public class InvoiceLine {
 	@JoinColumn(name="invoice_id")
 	private Invoice invoice;
 	
+	@Column(name="unit_price")
+	private int unitPrice; // price that a single unit was sold at.
+	
 	public Card getCard() {
 		return card;
 	}
@@ -45,13 +48,18 @@ public class InvoiceLine {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Invoice getInvoiceId() {
+	public Invoice getInvoice() {
 		return invoice;
 	}
 	public void setInvoice(Invoice invoice) {
 		this.invoice = invoice;
 	}
-	
+	public int getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
+	}
 	public InvoiceLine() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -93,7 +101,7 @@ public class InvoiceLine {
 	}
 	@Override
 	public String toString() {
-		return "InvoiceLine [card=" + card + ", quantity=" + quantity + ", id=" + id + "]";
+		return "InvoiceLine [card=" + card + ", quantity=" + quantity + ", id=" + id + ", unitPrice=" + unitPrice + "]";
 	}
 	
 	
