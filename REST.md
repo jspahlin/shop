@@ -8,6 +8,10 @@ GET	/invoice/ - List all invoices
 PUT	/invoice/approve
 PUT	/invoice/deny
 
+GET	/card
+POST	/card
+PUT	/card/{id}
+
 
 GET	/employee/ - List all employees
 POST	/employee/ - Create an employee
