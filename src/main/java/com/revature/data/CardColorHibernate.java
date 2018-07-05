@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardColor;
+import com.revature.beans.CardSet;
 
 @Component
 public class CardColorHibernate implements CardColorDao, HibernateSession {
@@ -32,6 +33,12 @@ public class CardColorHibernate implements CardColorDao, HibernateSession {
 	public CardColor update(CardColor color) {
 		session.update(color);
 		return color;
+	}
+	
+	@Override
+	public void delete(CardColor color) {
+		session.delete(color);
+
 	}
 
 	@Override
