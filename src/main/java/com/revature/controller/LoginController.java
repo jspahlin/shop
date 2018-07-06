@@ -86,6 +86,15 @@ public class LoginController {
 			return om.writeValueAsString(new UserAndRole(newLogin));
 		}
 	}
+	@RequestMapping(value="/login", method=RequestMethod.DELETE)
+	@CrossOrigin(origins="http://localhost:4200")
+	@ResponseBody
+	public String doLogout( HttpSession httpSession,
+			HttpServletResponse response) throws JsonProcessingException {
+		httpSession.invalidate();
+		return "";
+	}
+	
 }
 
 @Component
