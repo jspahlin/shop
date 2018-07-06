@@ -2,6 +2,7 @@ package com.revature.beans;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+
+
 
 @Entity
 public class Card {
@@ -27,23 +30,23 @@ public class Card {
 	@Column(name="converted_mana_cost")
 	private int convertedManaCost;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
 	@JoinColumn(name="card_rarity_id")
 	private CardRarity rarity;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
 	@JoinColumn(name="card_set_id")
 	private CardSet set;
 	
 	@Column(name="card_color")
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
 	@JoinTable(name="card_color_card",
 			joinColumns=@JoinColumn(name="card_id"),
 			inverseJoinColumns=@JoinColumn(name="card_color_id"))
 	private Set<CardColor> colors;
 	
 	@Column(name="creature_type")
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
 	@JoinTable(name="card_creature_type_card",
 			joinColumns=@JoinColumn(name="card_id"),
 			inverseJoinColumns=@JoinColumn(name="card_creature_type_id"))
@@ -51,7 +54,6 @@ public class Card {
 
 	public Card() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Card(int id, String name, String text, String imageUrl, int convertedManaCost, CardRarity rarity,

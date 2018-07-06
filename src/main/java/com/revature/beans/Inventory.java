@@ -1,48 +1,76 @@
 package com.revature.beans;
 
-public class Inventory {
-private Card card;
-private int id;
-private int quantity;
-private int amountSold;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
-public Card getCard() {
+@Entity
+public class Inventory {
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="inventory_gen")
+	@SequenceGenerator(name="inventory_gen", sequenceName="inventory_seq", allocationSize=1)	
+	private int id;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="inventory")
+	private Card card;	
+	@OneToOne(fetch = FetchType.EAGER,
+            cascade =  CascadeType.ALL,
+            mappedBy = "card")
+	private int quantity;
+	private int amountSold;
+	
+	public Inventory() {
+	super();
+	}
+
+	public Inventory(int id, Card card, int quantity, int amountSold) {
+		super();
+		this.id = id;
+		this.card = card;
+		this.quantity = quantity;
+		this.amountSold = amountSold;
+	}
+
+	public Card getCard() {
 	return card;
-}
-public void setCard(Card card) {
+	}
+	public void setCard(Card card) {
 	this.card = card;
-}
-public int getId() {
+	}
+	public int getId() {
 	return id;
-}
-public void setId(int id) {
+	}
+	public void setId(int id) {
 	this.id = id;
-}
-public int getQuantity() {
+	}
+	public int getQuantity() {
 	return quantity;
-}
-public void setQuantity(int quantity) {
+	}
+	public void setQuantity(int quantity) {
 	this.quantity = quantity;
-}
-public int getAmountSold() {
+	}
+	public int getAmountSold() {
 	return amountSold;
-}
-public void setAmountSold(int amountSold) {
+	}
+	public void setAmountSold(int amountSold) {
 	this.amountSold = amountSold;
-}
-public Inventory() {
-	super();
-	// TODO Auto-generated constructor stub
-}
-public Inventory(Card card, int id, int quantity, int amountSold) {
+	}
+
+
+	public Inventory(Card card, int id, int quantity, int amountSold) {
 	super();
 	this.card = card;
 	this.id = id;
 	this.quantity = quantity;
 	this.amountSold = amountSold;
-}
-@Override
-public int hashCode() {
+	}
+	@Override
+	public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + amountSold;
@@ -50,9 +78,9 @@ public int hashCode() {
 	result = prime * result + id;
 	result = prime * result + quantity;
 	return result;
-}
-@Override
-public boolean equals(Object obj) {
+	}
+	@Override
+	public boolean equals(Object obj) {
 	if (this == obj)
 		return true;
 	if (obj == null)
@@ -72,14 +100,9 @@ public boolean equals(Object obj) {
 	if (quantity != other.quantity)
 		return false;
 	return true;
-}
-@Override
-public String toString() {
+	}
+	@Override
+	public String toString() {
 	return "Inventory [card=" + card + ", id=" + id + ", quantity=" + quantity + ", amountSold=" + amountSold + "]";
-}
-
-
-
-
-
+	}
 }

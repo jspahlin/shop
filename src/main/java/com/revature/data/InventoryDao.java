@@ -1,13 +1,13 @@
 package com.revature.data;
 
-import java.util.Set;
-
+import java.util.List;
 import com.revature.beans.Inventory;
 
 public interface InventoryDao {
 	public Inventory get(int id);
-	public Inventory get(Inventory inventory);
-	public Inventory insert(Inventory inventory);
-	public boolean update(Inventory inventory);
-	public Set<Inventory> list();
+	public Inventory save(Inventory inventory);
+	public Inventory update(Inventory inventory);
+	public void delete(Inventory inventory);
+	
+	public List<Inventory> list();
 }
