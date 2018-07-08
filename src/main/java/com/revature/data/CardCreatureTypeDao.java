@@ -10,4 +10,5 @@ public interface CardCreatureTypeDao {
 	public CardCreatureType update(CardCreatureType creature);
 	public void delete(CardCreatureType creature);
 	public List<CardCreatureType> list();
+	public CardCreatureType findByName(String name);
 }

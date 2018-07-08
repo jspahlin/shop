@@ -8,8 +8,9 @@ GET	/invoice/ - List all invoices
 PUT	/invoice/approve
 PUT	/invoice/deny
 
-GET	/card
-POST	/card
+GET	/card/
+GET	/card/{id}
+POST	/card/
 PUT	/card/{id}
 
 

@@ -1,7 +1,9 @@
 package com.revature.data;
 
 import java.util.List;
+
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardType;
@@ -35,6 +37,13 @@ public class CardTypeHibernate implements CardTypeDao, HibernateSession {
 		session.delete(type);
 	}
 
+	@Override
+	public CardType findByName(String name) {
+		Query<CardType> q = session.createQuery("From com.revature.beans.CardType l where l.name=:name", CardType.class);
+		q.setParameter("name", name);
+		return q.uniqueResult();
+	}
+	
 	@Override
 	public List<CardType> list() { 
 		return (List<CardType>) session.createQuery("From com.revature.beans.CardType", CardType.class).list();

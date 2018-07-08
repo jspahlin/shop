@@ -10,4 +10,5 @@ public interface CardColorDao {
 	public CardColor update(CardColor color);
 	public void delete(CardColor color);
 	public List<CardColor> list();
+	public CardColor findByName(String name);
 }

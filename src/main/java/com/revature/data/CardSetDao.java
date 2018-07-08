@@ -9,4 +9,5 @@ public interface CardSetDao {
 	public CardSet update(CardSet set);
 	public void delete(CardSet set);
 	public List<CardSet> list();
+	public CardSet findByName(String name);
 }

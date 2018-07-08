@@ -3,6 +3,7 @@ package com.revature.data;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardCreatureType;
@@ -34,6 +35,12 @@ public class CardCreatureTypeHibernate implements CardCreatureTypeDao, Hibernate
 	@Override
 	public void delete(CardCreatureType creature) {
 		session.delete(creature);
+	}
+	@Override
+	public CardCreatureType findByName(String name) {
+		Query<CardCreatureType> q = session.createQuery("From com.revature.beans.CardCreatureType l where l.name=:name", CardCreatureType.class);
+		q.setParameter("name", name);
+		return q.uniqueResult();
 	}
 	@Override
 	public List<CardCreatureType> list() {

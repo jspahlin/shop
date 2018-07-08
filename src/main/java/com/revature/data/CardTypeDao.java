@@ -8,5 +8,7 @@ public interface CardTypeDao {
 	public CardType save(CardType type);
 	public CardType update(CardType type);
 	public void delete(CardType type);
+	
 	public List<CardType> list();
+	CardType findByName(String name);
 }

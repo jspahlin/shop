@@ -3,9 +3,11 @@ package com.revature.data;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardRarity;
+import com.revature.beans.Login;
 
 @Component
 public class CardRarityHibernate implements CardRarityDao, HibernateSession {
@@ -19,7 +21,12 @@ public class CardRarityHibernate implements CardRarityDao, HibernateSession {
 	public CardRarity get(int id) {
 		return (CardRarity) session.get(CardRarity.class, id);
 	}
-
+	@Override
+	public CardRarity findByName(String name) {
+		Query<CardRarity> q = session.createQuery("From com.revature.beans.CardRarity l where l.name=:name", CardRarity.class);
+		q.setParameter("name", name);
+		return q.uniqueResult();
+	}
 	@Override
 	public CardRarity save(CardRarity rarity) {
 		session.save(rarity);

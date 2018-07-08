@@ -16,6 +16,7 @@ public class CardCreatureType {
 	@SequenceGenerator(name="card_creature_type_gen", sequenceName="card_creature_type_seq", allocationSize=1)
     @GeneratedValue(generator="card_creature_type_gen", strategy=GenerationType.SEQUENCE)
 	private int id;
+	@Column(unique=true)
 	private String name;
 	public CardCreatureType() {
 		super();

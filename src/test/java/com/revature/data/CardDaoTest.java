@@ -8,13 +8,8 @@ import static org.junit.Assert.assertNull;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.revature.beans.*;
 import org.junit.Test;
-
-import com.revature.beans.Card;
-import com.revature.beans.CardColor;
-import com.revature.beans.CardCreatureType;
-import com.revature.beans.CardRarity;
-import com.revature.beans.CardSet;
 
 public class CardDaoTest extends DaoTest {
 	{ o = new CardHibernate(); }
@@ -23,7 +18,9 @@ public class CardDaoTest extends DaoTest {
 		CardHibernate o = (CardHibernate) this.o;
 		Set<CardColor> colors = new HashSet<CardColor>();
 		colors.add(new CardColor(0, "Blue"));
-		Card test = new Card(0, "TEST", "Card text", "http://blah.com", 9, new CardRarity(0, "Rare"), new CardSet(0, "Alpha"), colors, new HashSet<CardCreatureType>());
+		Card test = new Card(0, "TEST", "Card text", "http://blah.com", 9,
+				new CardRarity(0, "Rare"), new CardSet(0, "Alpha"), new CardType(0, "Instant"),
+				colors, new HashSet<CardCreatureType>());
 		Card testResult = o.save(test);
 
 

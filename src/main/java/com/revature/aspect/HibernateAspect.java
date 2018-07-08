@@ -11,11 +11,13 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.revature.data.HibernateSession;
+import com.revature.exceptions.UnauthorizedException;
 import com.revature.utils.HibernateUtil;
 
 @Component
@@ -44,10 +46,16 @@ public class HibernateAspect {
                         log.info("flushing...");
                         session.flush();
                 } catch (PersistenceException e) {
+                	
                 	tx.rollback();
                 	session.close();
                 	hs.setSession(null);
-                	return null;
+                	if(e.getCause() instanceof ConstraintViolationException) {
+                		e.getCause().printStackTrace();
+                		throw new UnauthorizedException();
+                	}
+                	throw e;
+                	//return null;
                 } catch (Error|Exception e) {
                         tx.rollback();
                         session.close();

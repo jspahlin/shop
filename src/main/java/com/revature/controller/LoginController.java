@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Admin;
+import com.revature.beans.CardRarity;
 import com.revature.beans.Customer;
 import com.revature.beans.Employee;
 import com.revature.beans.Login;
+import com.revature.data.CardRarityDao;
 import com.revature.services.UserService;
 
 @Controller
@@ -27,6 +29,9 @@ public class LoginController {
 	private ObjectMapper om = new ObjectMapper();
 	@Autowired
 	UserService us;
+	@Autowired
+	CardRarityDao crd;
+	
 	//@EventListener(ApplicationReadyEvent.class)
 	@PostConstruct
 	public void doSomethingAfterStartup() {
@@ -38,6 +43,12 @@ public class LoginController {
 		us.addUser(user);
 		user = new Login(0, "login", "password", "jspahlin+login@gmail.com");
 		us.addUser(user);
+		
+		crd.save(new CardRarity(0, "Common"));
+		crd.save(new CardRarity(0, "Uncommon"));
+		crd.save(new CardRarity(0, "Rare"));
+		crd.save(new CardRarity(0, "Mythic"));
+		
 	    System.out.println("hello world, I have just started up");
 	}
 	
@@ -87,7 +98,7 @@ public class LoginController {
 		}
 	}
 }
-
+  
 @Component
 class UserPass {
 	private String username;

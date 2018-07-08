@@ -16,6 +16,7 @@ public class CardRarity {
 	@SequenceGenerator(name="card_rarity_gen", sequenceName="card_rarity_seq", allocationSize=1)
     @GeneratedValue(generator="card_rarity_gen", strategy=GenerationType.SEQUENCE)
 	private int id;
+	@Column(unique=true)
 	private String name;
 	public CardRarity() {
 		super();

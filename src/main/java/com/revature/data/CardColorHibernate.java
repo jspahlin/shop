@@ -3,9 +3,11 @@ package com.revature.data;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardColor;
+import com.revature.beans.CardRarity;
 
 @Component
 public class CardColorHibernate implements CardColorDao, HibernateSession {
@@ -36,6 +38,12 @@ public class CardColorHibernate implements CardColorDao, HibernateSession {
 	@Override
 	public void delete(CardColor color) {
 		session.delete(color);
+	}
+	@Override
+	public CardColor findByName(String name) {
+		Query<CardColor> q = session.createQuery("From com.revature.beans.CardColor l where l.name=:name", CardColor.class);
+		q.setParameter("name", name);
+		return q.uniqueResult();
 	}
 
 	@Override

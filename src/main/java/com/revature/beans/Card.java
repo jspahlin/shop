@@ -52,13 +52,17 @@ public class Card {
 			inverseJoinColumns=@JoinColumn(name="card_creature_type_id"))
 	private Set<CardCreatureType> creatureTypes;
 
+	@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+	@JoinColumn(name="card_type_id")
+	private CardType type;
+
 	public Card() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Card(int id, String name, String text, String imageUrl, int convertedManaCost, CardRarity rarity,
-			CardSet set, Set<CardColor> colors, Set<CardCreatureType> creatureTypes) {
+			CardSet set, CardType type, Set<CardColor> colors, Set<CardCreatureType> creatureTypes) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -67,6 +71,7 @@ public class Card {
 		this.convertedManaCost = convertedManaCost;
 		this.rarity = rarity;
 		this.set = set;
+		this.type = type;
 		this.colors = colors;
 		this.creatureTypes = creatureTypes;
 	}
@@ -119,6 +124,13 @@ public class Card {
 		this.rarity = rarity;
 	}
 
+	public CardType getType() {
+		return type;
+	}
+
+	public void setType(CardType type) {
+		this.type = type;
+	}
 	public CardSet getSet() {
 		return set;
 	}

@@ -23,3 +23,4 @@ public class CardColorController {
 		return om.writeValueAsString(ccd.list());
 	}
 }
+

@@ -16,6 +16,7 @@ public class CardColor {
 	@SequenceGenerator(name="card_color_gen", sequenceName="card_color_seq", allocationSize=1)
     @GeneratedValue(generator="card_color_gen", strategy=GenerationType.SEQUENCE)
 	private int id;
+	@Column(unique=true)
 	private String name;
 	public CardColor() {
 		super();

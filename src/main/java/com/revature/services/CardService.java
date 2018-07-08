@@ -6,4 +6,6 @@ import com.revature.beans.Card;
 
 public interface CardService {
 	public List<Card> list();
+
+	public Card save(Card card);
 }

@@ -10,4 +10,5 @@ public interface CardRarityDao {
 	public CardRarity update(CardRarity rarity);
 	public void delete(CardRarity rarity);
 	public List<CardRarity> list();
+	public CardRarity findByName(String name);
 }
