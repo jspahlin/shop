@@ -32,7 +32,6 @@ public class LoginController {
 	@Autowired
 	CardRarityDao crd;
 	
-	//@EventListener(ApplicationReadyEvent.class)
 	@PostConstruct
 	public void doSomethingAfterStartup() {
 		Login user = new Admin(0, "admin", "password", "jspahlin+admin@gmail.com", "123 Fake RD, Alaska", "123 Fake RD, Alaska");
