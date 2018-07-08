@@ -58,7 +58,6 @@ public class Card {
 
 	public Card() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Card(int id, String name, String text, String imageUrl, int convertedManaCost, CardRarity rarity,
