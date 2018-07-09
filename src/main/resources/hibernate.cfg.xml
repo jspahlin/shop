@@ -28,6 +28,7 @@
 	<mapping class="com.revature.beans.CardRarity"></mapping>
 	<mapping class="com.revature.beans.CardSet"></mapping>
 	<mapping class="com.revature.beans.Card"></mapping>
+	<mapping class="com.revature.beans.Cart"></mapping>
 	<mapping class="com.revature.beans.Login"></mapping>
 	<mapping class="com.revature.beans.Customer"></mapping>
 	<mapping class="com.revature.beans.Employee"></mapping>
