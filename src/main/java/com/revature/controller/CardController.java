@@ -33,8 +33,8 @@ public class CardController {
 	public String getCardType() throws JsonProcessingException {
 		Set<CardColor> colors = new HashSet<CardColor>();
 		colors.add(new CardColor(0, "Blue"));
-		Card test = new Card(0, "TEST", "Card text", "http://blah.com", 9, new CardRarity(0, "Rare"), new CardSet(0, "Alpha"),
-				new CardType(0,"Instant"), new HashSet<CardColor>(), new HashSet<CardCreatureType>());
+		Card test = new Card(0, "TEST", "Card text", "http://blah.com", 100, 9, new CardRarity(0, "Rare"), new CardSet(0, "Alpha"),
+				new HashSet<CardType>(), new HashSet<CardColor>(), new HashSet<CardCreatureType>());
 		
 		Card testResult = cs.save(test);
 		return om.writeValueAsString(cs.list());

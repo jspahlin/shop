@@ -52,16 +52,21 @@ public class Card {
 			inverseJoinColumns=@JoinColumn(name="card_creature_type_id"))
 	private Set<CardCreatureType> creatureTypes;
 
-	@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
-	@JoinColumn(name="card_type_id")
-	private CardType type;
+	@Column(name="card_type")
+	@ManyToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+	@JoinTable(name="card_type_card",
+			joinColumns=@JoinColumn(name="card_id"),
+			inverseJoinColumns=@JoinColumn(name="card_type_id"))
+	private Set<CardType> type;
+	
+	private int price;
 
 	public Card() {
 		super();
 	}
 
-	public Card(int id, String name, String text, String imageUrl, int convertedManaCost, CardRarity rarity,
-			CardSet set, CardType type, Set<CardColor> colors, Set<CardCreatureType> creatureTypes) {
+	public Card(int id, String name, String text, String imageUrl, int price, int convertedManaCost, CardRarity rarity,
+			CardSet set, Set<CardType> type, Set<CardColor> colors, Set<CardCreatureType> creatureTypes) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -71,6 +76,7 @@ public class Card {
 		this.rarity = rarity;
 		this.set = set;
 		this.type = type;
+		this.price = price;
 		this.colors = colors;
 		this.creatureTypes = creatureTypes;
 	}
@@ -98,6 +104,14 @@ public class Card {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 	public String getImageUrl() {
 		return imageUrl;
@@ -123,11 +137,11 @@ public class Card {
 		this.rarity = rarity;
 	}
 
-	public CardType getType() {
+	public Set<CardType> getType() {
 		return type;
 	}
 
-	public void setType(CardType type) {
+	public void setType(Set<CardType> type) {
 		this.type = type;
 	}
 	public CardSet getSet() {

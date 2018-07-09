@@ -45,9 +45,7 @@ public class CardServiceImpl implements CardService {
 		if(csd.findByName(card.getSet().getName()) != null) {
 			card.setSet(csd.findByName(card.getSet().getName()));
 		}
-		if(ctd.findByName(card.getType().getName()) != null) {
-			card.setType(ctd.findByName(card.getType().getName()));
-		}
+		
 		
 		
 		
