@@ -34,6 +34,7 @@
 	<mapping class="com.revature.beans.Admin"></mapping>
 	<mapping class="com.revature.beans.Invoice"></mapping>
 	<mapping class="com.revature.beans.InvoiceLine"></mapping>
+	<mapping class="com.revature.beans.Inventory"></mapping>
 		
 </session-factory>
 </hibernate-configuration>

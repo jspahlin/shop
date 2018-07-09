@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -16,11 +18,13 @@ public class Inventory {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="inventory_gen")
 	@SequenceGenerator(name="inventory_gen", sequenceName="inventory_seq", allocationSize=1)	
 	private int id;
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="inventory")
-	private Card card;	
-	@OneToOne(fetch = FetchType.EAGER,
-            cascade =  CascadeType.ALL,
-            mappedBy = "card")
+	//@OneToMany(fetch=FetchType.EAGER, mappedBy="inventory")
+	@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
+	@JoinColumn(name="card_id")
+	//@OneToOne(fetch = FetchType.EAGER,
+    //        cascade =  CascadeType.ALL,
+    //        mappedBy = "card")
+	private Card card;
 	private int quantity;
 	private int amountSold;
 	

@@ -3,10 +3,11 @@ package com.revature.data;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
-import com.revature.beans.CardCreatureType;
 import com.revature.beans.Inventory;
 
+@Component
 public class InventoryHibernate implements InventoryDao, HibernateSession {
 	private Session session;
 	@Override
