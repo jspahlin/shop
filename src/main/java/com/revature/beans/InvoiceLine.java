@@ -9,8 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+// A single card should be mentioned only once per invoice.
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"invoice_id", "card_id"})})
 public class InvoiceLine {
 	@Id
 	@Column

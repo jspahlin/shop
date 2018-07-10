@@ -16,6 +16,7 @@ public class CardSet {
 	@SequenceGenerator(name="card_set_gen", sequenceName="card_set_seq", allocationSize=1)
     @GeneratedValue(generator="card_set_gen", strategy=GenerationType.SEQUENCE)
 	private int id;
+	@Column(unique=true)
 	private String name;
 	public CardSet() {
 		super();
