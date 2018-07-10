@@ -5,10 +5,12 @@ import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Invoice;
 import com.revature.beans.InvoiceLine;
 
+@Component
 public class InvoiceHibernate implements InvoiceDao, HibernateSession {
 	private Session session;
 	@Override
@@ -39,6 +41,13 @@ public class InvoiceHibernate implements InvoiceDao, HibernateSession {
 		session.delete(invoice);
 	}
 
+	@Override
+	public Invoice getByUser(int userID) {
+		Query<Invoice> q = session.createQuery("From com.revature.beans.Invoice in where in.customer_id=:customerId and in.status=:status", Invoice.class);
+		q.setParameter("customerId", userID);
+		q.setParameter("status", "CURRENT");
+		return q.getSingleResult();
+	}
 	
 	@Override
 	public List<Invoice> listByUser(int userId) {

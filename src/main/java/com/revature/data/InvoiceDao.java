@@ -8,6 +8,7 @@ public interface InvoiceDao {
 	public Invoice update(Invoice invoice);
 	public Invoice save(Invoice invoice);
 	public void delete(Invoice invoice);
+	public Invoice getByUser(int userID);
 	public List<Invoice> listByUser(int userId);
 	public List<Invoice> list();
 }
