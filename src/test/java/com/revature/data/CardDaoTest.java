@@ -18,8 +18,8 @@ public class CardDaoTest extends DaoTest {
 		CardHibernate o = (CardHibernate) this.o;
 		Set<CardColor> colors = new HashSet<CardColor>();
 		colors.add(new CardColor(0, "Blue"));
-		Card test = new Card(0, "TEST", "Card text", "http://blah.com", 9,
-				new CardRarity(0, "Rare"), new CardSet(0, "Alpha"), new CardType(0, "Instant"),
+		Card test = new Card(0, "TEST", "Card text", "http://blah.com", 100, 9,
+				new CardRarity(0, "Rare"), new CardSet(0, "Alpha"), new HashSet<CardType>(),
 				colors, new HashSet<CardCreatureType>());
 		Card testResult = o.save(test);
 
