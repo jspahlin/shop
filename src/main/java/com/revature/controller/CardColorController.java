@@ -20,7 +20,7 @@ public class CardColorController {
 	@Autowired
 	CardColorDao ccd;
 	
-	@PostConstruct
+	/*@PostConstruct
 	public void addSomeColors() {
 		ccd.save(new CardColor(0, "Blue"));
 		ccd.save(new CardColor(0, "White"));
@@ -28,7 +28,7 @@ public class CardColorController {
 		ccd.save(new CardColor(0, "Red"));
 		ccd.save(new CardColor(0, "Black"));
 		ccd.save(new CardColor(0, "Colorless"));
-	}
+	}*/
 	
 	@RequestMapping(value="/card/color", method=RequestMethod.GET)
 	@CrossOrigin(origins="http://localhost:4200")
