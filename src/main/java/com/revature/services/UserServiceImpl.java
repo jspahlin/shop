@@ -1,13 +1,13 @@
 package com.revature.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.Login;
 import com.revature.data.LoginDao;
 
-@Component
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
@@ -28,4 +28,8 @@ public class UserServiceImpl implements UserService {
 		return ld.update(login);
 	}
 	
+	@Override
+	public List<Login> listAll() {
+		return ld.list();
+	}
 }
