@@ -3,10 +3,12 @@ package com.revature.data;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Cart;
 import com.revature.beans.Inventory;
 
+@Component
 public class CartHibernate implements CartDAO, HibernateSession{
 	private Session session;
 	@Override

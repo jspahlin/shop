@@ -3,6 +3,7 @@ package com.revature.beans;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ public class Cart {
 	@OneToOne(fetch = FetchType.EAGER,
             cascade =  CascadeType.ALL,
             mappedBy = "cart")
+	@Column(name="cards_on_cart")
 	private List<Card> list;
 	
 	public Cart() {
