@@ -20,7 +20,7 @@ public class CardSetController {
 	@Autowired
 	CardSetDao csd;
 	
-	@PostConstruct
+	/*@PostConstruct
 	public void addSomeSets() {
 		csd.save(new CardSet(0, "Dominaria"));
 		csd.save(new CardSet(0, "Ixalan"));
@@ -29,7 +29,7 @@ public class CardSetController {
 		csd.save(new CardSet(0, "Kaladesh"));
 		csd.save(new CardSet(0, "Eldritch Moon"));
 		csd.save(new CardSet(0, "Shadows over Innistrad"));
-	}
+	}*/
 	
 	@RequestMapping(value="/card/set", method=RequestMethod.GET)
 	@CrossOrigin(origins="http://localhost:4200")

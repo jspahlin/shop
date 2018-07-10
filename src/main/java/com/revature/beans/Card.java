@@ -14,10 +14,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 
 
 @Entity
+@Table(
+		uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "card_set_id"})}
+		)
 public class Card {
 	@Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="card_gen")

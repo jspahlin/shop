@@ -32,6 +32,7 @@ public class LoginController {
 	@Autowired
 	CardRarityDao crd;
 	
+	/*
 	@PostConstruct
 	public void doSomethingAfterStartup() {
 		Login user = new Admin(0, "admin", "password", "jspahlin+admin@gmail.com", "123 Fake RD, Alaska", "123 Fake RD, Alaska");
@@ -50,6 +51,7 @@ public class LoginController {
 		
 	    System.out.println("hello world, I have just started up");
 	}
+	*/
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@CrossOrigin(origins="http://localhost:4200")
