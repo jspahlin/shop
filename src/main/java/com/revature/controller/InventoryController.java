@@ -32,7 +32,7 @@ public class InventoryController {
 	public void addInventoryTest() {
 		Card test = new Card(0, "Banana", "gives monkeys +1/+1", "http://blah.com", 100, 9, null,null,
 				new HashSet<CardType>(), new HashSet<CardColor>(), new HashSet<CardCreatureType>());
-		Inventory test2 = new Inventory(0,null, 5, 2);
+		Inventory test2 = new Inventory(0,test, 5, 2);
 		is.save(test2);
 	}
 	
