@@ -14,7 +14,6 @@ public class UserAndRole {
 	
 	public UserAndRole() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	UserAndRole(Login user) {
