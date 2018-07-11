@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,8 +30,8 @@ public class AccountController {
 		if(!(user instanceof Customer)) {
 			user = new Customer(user);
 		} 
-		((Customer) user).setBillingAdress(cd.billingAddress);
-		((Customer) user).setShippingAddress(cd.billingAddress);
+		((Customer) user).setBillingAdress(cd.getBillingAddress());
+		((Customer) user).setShippingAddress(cd.getBillingAddress());
 		us.update(user);
 		httpSession.setAttribute("currentUser", user);
 		return om.writeValueAsString(new UserAndRole(user));
@@ -41,6 +40,22 @@ public class AccountController {
 
 @Component
 class CustomerDetails {
-	public String billingAddress;
-	public String shippingAddress;
+	private String billingAddress;
+	private String shippingAddress;
+	public CustomerDetails() {
+		super();
+	}
+	public String getBillingAddress() {
+		return billingAddress;
+	}
+	public void setBillingAddress(String billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+	public String getShippingAddress() {
+		return shippingAddress;
+	}
+	public void setShippingAddress(String shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+	
 }

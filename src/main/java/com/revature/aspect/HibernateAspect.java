@@ -32,7 +32,7 @@ public class HibernateAspect {
         	log.trace("Created a HibernateAspect!");
         }
         @Around("allDaoObject()")
-        public Object manageSession(ProceedingJoinPoint pjp) throws Throwable {
+        public Object manageSession(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
                 Object obj = null;
 
 				synchronized (this) {
@@ -55,7 +55,6 @@ public class HibernateAspect {
                 		throw new UnauthorizedException();
                 	}
                 	throw e;
-                	//return null;
                 } catch (Error|Exception e) {
                         tx.rollback();
                         session.close();

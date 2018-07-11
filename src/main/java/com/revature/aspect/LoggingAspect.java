@@ -27,7 +27,7 @@ public class LoggingAspect {
                         obj = pjp.proceed();
                 } catch(UnauthorizedException e) {
                 	throw e;
-                } catch (Throwable e) {
+                } catch (Throwable e) { // NOSONAR
                         log.error(e.getMessage());
                         for(StackTraceElement s : e.getStackTrace()) {
                                 log.warn(s);

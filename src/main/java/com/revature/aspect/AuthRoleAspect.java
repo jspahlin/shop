@@ -26,6 +26,7 @@ import com.revature.exceptions.UnauthorizedException;
 @Order(20)
 public class AuthRoleAspect {
 	private static Logger log = Logger.getLogger(HibernateAspect.class.toString());
+	private static final String CURRENT_USER = "currentUser";
 	@Autowired
 	HttpSession httpSession;
 	
@@ -34,9 +35,9 @@ public class AuthRoleAspect {
 	}
 	
 	@Around("adminRoutedFunctions()")
-	public Object forceAdminLogin(ProceedingJoinPoint pjp) throws Throwable {
+	public Object forceAdminLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
-		Login user = (Login) httpSession.getAttribute("currentUser");
+		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if(user instanceof Admin) {
 			obj = pjp.proceed();
 		} else {			
@@ -46,9 +47,9 @@ public class AuthRoleAspect {
 	}
 	
 	@Around("employeeRoutedFunctions()")
-	public Object forceEmployeeLogin(ProceedingJoinPoint pjp) throws Throwable {
+	public Object forceEmployeeLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
-		Login user = (Login) httpSession.getAttribute("currentUser");
+		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if(user instanceof Employee) {
 			obj = pjp.proceed();
 		} else {			
@@ -58,9 +59,9 @@ public class AuthRoleAspect {
 	}
 	
 	@Around("customerRoutedFunctions()")
-	public Object forceCustomerLogin(ProceedingJoinPoint pjp) throws Throwable {
+	public Object forceCustomerLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
-		Login user = (Login) httpSession.getAttribute("currentUser");
+		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if(user instanceof Customer) {
 			obj = pjp.proceed();
 		} else {			

@@ -30,11 +30,10 @@ public class AuthAspect {
 	}
 	// make sure we are logged in or return unauthorized errors.
 	@Around("routedFunctions()") 
-	public Object forceLogin(ProceedingJoinPoint pjp) throws Throwable {
+	public Object forceLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
 		Login user = (Login) httpsession.getAttribute("currentUser");
 		if(user == null) {
-			//obj = pjp.proceed();
 			throw new UnauthorizedException();
 		} else {			
 			obj = pjp.proceed();
