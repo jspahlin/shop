@@ -81,7 +81,7 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping(value="/account/new/login")
+	@RequestMapping(value="/account/new/login", method=RequestMethod.POST)
 	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String makeNewAccount(@RequestBody Login login, HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
