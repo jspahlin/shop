@@ -30,8 +30,8 @@ public class AccountController {
 		if(!(user instanceof Customer)) {
 			user = new Customer(user);
 		} 
-		((Customer) user).setBillingAdress(cd.billingAddress);
-		((Customer) user).setShippingAddress(cd.billingAddress);
+		((Customer) user).setBillingAdress(cd.getBillingAddress());
+		((Customer) user).setShippingAddress(cd.getBillingAddress());
 		us.update(user);
 		httpSession.setAttribute("currentUser", user);
 		return om.writeValueAsString(new UserAndRole(user));
@@ -42,4 +42,21 @@ public class AccountController {
 class CustomerDetails {
 	public String billingAddress;
 	public String shippingAddress;
+	public CustomerDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public String getBillingAddress() {
+		return billingAddress;
+	}
+	public void setBillingAddress(String billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+	public String getShippingAddress() {
+		return shippingAddress;
+	}
+	public void setShippingAddress(String shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+	
 }
