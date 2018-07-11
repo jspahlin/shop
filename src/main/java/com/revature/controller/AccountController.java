@@ -44,7 +44,6 @@ class CustomerDetails {
 	private String shippingAddress;
 	public CustomerDetails() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public String getBillingAddress() {
 		return billingAddress;
