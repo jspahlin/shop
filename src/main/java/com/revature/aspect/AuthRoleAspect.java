@@ -35,7 +35,7 @@ public class AuthRoleAspect {
 	}
 	
 	@Around("adminRoutedFunctions()")
-	public Object forceAdminLogin(ProceedingJoinPoint pjp) throws Throwable {
+	public Object forceAdminLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
 		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if(user instanceof Admin) {
@@ -47,7 +47,7 @@ public class AuthRoleAspect {
 	}
 	
 	@Around("employeeRoutedFunctions()")
-	public Object forceEmployeeLogin(ProceedingJoinPoint pjp) throws Throwable {
+	public Object forceEmployeeLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
 		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if(user instanceof Employee) {
@@ -59,7 +59,7 @@ public class AuthRoleAspect {
 	}
 	
 	@Around("customerRoutedFunctions()")
-	public Object forceCustomerLogin(ProceedingJoinPoint pjp) throws Throwable {
+	public Object forceCustomerLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
 		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if(user instanceof Customer) {
