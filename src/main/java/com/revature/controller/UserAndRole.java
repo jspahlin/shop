@@ -9,8 +9,8 @@ import com.revature.beans.Login;
 
 @Component
 public class UserAndRole {
-	public Login user;
-	public String role;
+	private Login user;
+	private String role;
 	
 	public UserAndRole() {
 		super();
