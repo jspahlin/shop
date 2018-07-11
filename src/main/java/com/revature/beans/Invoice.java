@@ -11,8 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Table(name="invoice")
 public class Invoice {
 	@Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="invoice_gen")
@@ -20,8 +24,10 @@ public class Invoice {
 	// invoice id 
 	private int id;
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="invoice")
+	@JsonIgnoreProperties(value = "invoice")
 	private Set<InvoiceLine> invoiceLines;
 	@ManyToOne(fetch=FetchType.EAGER)
+	
 	@JoinColumn(name="customer_id")
 	private Customer customerId;
 	private String status;

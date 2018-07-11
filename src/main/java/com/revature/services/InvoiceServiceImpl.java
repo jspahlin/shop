@@ -3,6 +3,7 @@ package com.revature.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.beans.Customer;
 import com.revature.beans.Invoice;
 import com.revature.beans.Login;
 import com.revature.data.InvoiceDao;
@@ -16,8 +17,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 	private InvoiceLineDao ild;
 
 	@Override
-	public Invoice getInvoice(int id) {
-		Invoice invoice = this.id.getByUser(id);		
+	public Invoice getInvoice(Customer cust) {
+		Invoice invoice = this.id.getByUser(cust);		
 		return invoice;
 	}
 	

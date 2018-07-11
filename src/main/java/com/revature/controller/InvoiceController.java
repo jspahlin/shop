@@ -11,34 +11,36 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.beans.Customer;
 import com.revature.beans.Invoice;
 import com.revature.beans.Login;
 import com.revature.services.InvoiceService;
 
 @Controller
-@RequestMapping(value="/cart")
 public class InvoiceController {
 	private ObjectMapper om = new ObjectMapper();
 	
 	@Autowired
 	InvoiceService is;
 	
-	@RequestMapping(value = "/cart/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/cart", method=RequestMethod.GET)
 	@ResponseBody
 	public String getInvoice (HttpSession httpSession) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute("currentUser");
+		Customer cust = (Customer) user;
+		System.out.println(cust);
 		int id = user.getId();
-		return om.writeValueAsString(is.getInvoice(id));
+		return om.writeValueAsString(is.getInvoice(cust));
 	}
 	
-	@RequestMapping(value="/cart/purchase", method=RequestMethod.POST)
-	@ResponseBody
-	public String purchase (HttpSession httpSession) throws JsonProcessingException {
-		Login user = (Login) httpSession.getAttribute("currentUser");
-		int id = user.getId();
-		Invoice invoice = is.getInvoice(id);
-		invoice.setStatus("pendingApproval");
-		is.update(invoice);
-		return invoice.getStatus();
-	}
+//	@RequestMapping(value="/cart/purchase", method=RequestMethod.POST)
+//	@ResponseBody
+//	public String purchase (HttpSession httpSession) throws JsonProcessingException {
+//		Login user = (Login) httpSession.getAttribute("currentUser");
+//		int id = user.getId();
+//		Invoice invoice = is.getInvoice(id);
+//		invoice.setStatus("pendingApproval");
+//		is.update(invoice);
+//		return invoice.getStatus();
+//	}
 }
