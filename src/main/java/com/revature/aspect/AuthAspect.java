@@ -34,7 +34,6 @@ public class AuthAspect {
 		Object obj = null;
 		Login user = (Login) httpsession.getAttribute("currentUser");
 		if(user == null) {
-			//obj = pjp.proceed();
 			throw new UnauthorizedException();
 		} else {			
 			obj = pjp.proceed();
