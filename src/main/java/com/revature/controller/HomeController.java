@@ -18,7 +18,6 @@ public class HomeController {
      public String getHomepage(HttpSession s) {
 		 CardRarityDao crd = (CardRarityDao) ac.getBean(CardRarityDao.class);
 		 crd.save(new CardRarity(0, "Rare"));
-		 System.out.println(crd.list());
 		 return "static/index.html";
      }
 }
