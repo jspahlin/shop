@@ -40,8 +40,8 @@ public class AccountController {
 
 @Component
 class CustomerDetails {
-	public String billingAddress;
-	public String shippingAddress;
+	private String billingAddress;
+	private String shippingAddress;
 	public CustomerDetails() {
 		super();
 		// TODO Auto-generated constructor stub
