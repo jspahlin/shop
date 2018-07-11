@@ -29,7 +29,6 @@ public class CardController {
 	CardService cs;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getCardType() throws JsonProcessingException {
 		Set<CardColor> colors = new HashSet<CardColor>();
@@ -42,7 +41,6 @@ public class CardController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String employeeSaveCard(@RequestBody Card card) throws JsonProcessingException {
 		return om.writeValueAsString(cs.save(card));

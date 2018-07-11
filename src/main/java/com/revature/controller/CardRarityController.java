@@ -17,7 +17,6 @@ public class CardRarityController {
 	@Autowired
 	CardRarityDao crd;
 	@RequestMapping(value="/card/rarity", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getCardType() throws JsonProcessingException {
 		return om.writeValueAsString(crd.list());

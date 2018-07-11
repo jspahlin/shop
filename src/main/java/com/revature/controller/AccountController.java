@@ -24,7 +24,6 @@ public class AccountController {
 	UserService us;
 	
 	@RequestMapping(value="/account/login", method=RequestMethod.PUT)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String registerCustomerFromLogin(@RequestBody CustomerDetails cd, HttpSession httpSession) throws JsonProcessingException {
 		// updating your own customer details.

@@ -17,7 +17,6 @@ public class CardTypeController {
 	@Autowired
 	CardTypeDao ctd;
 	@RequestMapping(value="/card/type", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getCardType() throws JsonProcessingException {
 		

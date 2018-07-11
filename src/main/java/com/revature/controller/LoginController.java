@@ -54,7 +54,7 @@ public class LoginController {
 	*/
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	@CrossOrigin(origins="http://localhost:4200")
+	//@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String doLogin(@RequestBody UserPass up, HttpSession httpSession,
 			HttpServletResponse response) throws JsonProcessingException {
@@ -70,7 +70,6 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getSession(HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute("currentUser");
@@ -83,7 +82,6 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/account/new/login", method=RequestMethod.POST)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String makeNewAccount(@RequestBody Login login, HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute("currentUser");
@@ -100,7 +98,6 @@ public class LoginController {
 		}
 	}
 	@RequestMapping(value="/login", method=RequestMethod.DELETE)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String doLogout( HttpSession httpSession,
 			HttpServletResponse response) throws JsonProcessingException {

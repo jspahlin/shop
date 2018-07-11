@@ -24,7 +24,6 @@ public class InvoiceController {
 	InvoiceService is;
 	
 	@RequestMapping(value = "/cart/{id}", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getInvoice (HttpSession httpSession) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute("currentUser");
@@ -33,7 +32,6 @@ public class InvoiceController {
 	}
 	
 	@RequestMapping(value="/cart/purchase", method=RequestMethod.POST)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String purchase (HttpSession httpSession) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute("currentUser");

@@ -18,5 +18,14 @@
         <!-- Set up our resources folder -->
         <mvc:resources location="/static" mapping="/**"></mvc:resources>
         
+        
+<mvc:cors>
+	<mvc:mapping path="/**"
+		allowed-origins="http://localhost:4200"
+		allowed-methods="POST, GET, PUT, DELETE, OPTIONS"
+		allowed-headers="Content-Type"
+		
+		allow-credentials="true" />
+</mvc:cors>
         <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>

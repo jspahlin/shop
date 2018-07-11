@@ -13,6 +13,8 @@ GET	/card/{id}
 POST	/card/
 PUT	/card/{id}
 
+GET	/inventory/{id}
+
 
 GET	/employee/ - List all employees
 POST	/employee/ - Create an employee

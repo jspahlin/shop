@@ -16,7 +16,6 @@ public class HomeController {
 	@Autowired
 	ApplicationContext ac;
 	@RequestMapping(value="/home1", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
      public String getHomepage(HttpSession s) {
 		 CardRarityDao crd = (CardRarityDao) ac.getBean(CardRarityDao.class);
 		 crd.save(new CardRarity(0, "Rare"));

@@ -17,7 +17,6 @@ public class CardCreatureTypeController {
 	@Autowired
 	CardCreatureTypeDao cctd;
 	@RequestMapping(value="/card/creature/type", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getCardType() throws JsonProcessingException {
 		return om.writeValueAsString(cctd.list());

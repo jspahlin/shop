@@ -33,7 +33,6 @@ public class InventoryController {
 	InventoryService is;
 	
 	@RequestMapping(value = "/inventory/{id}", method=RequestMethod.POST)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String get (@PathVariable int id, HttpSession httpSession) throws JsonProcessingException {
 		return om.writeValueAsString(is.get(id));
@@ -48,14 +47,12 @@ public class InventoryController {
 	}*/
 	
 	@RequestMapping(method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getInventory () throws JsonProcessingException {
 		return om.writeValueAsString(is.list());
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String employeeSaveCard(@RequestBody Inventory inv) throws JsonProcessingException {
 		return om.writeValueAsString(is.save(inv));

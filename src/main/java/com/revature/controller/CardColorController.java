@@ -31,7 +31,6 @@ public class CardColorController {
 	}*/
 	
 	@RequestMapping(value="/card/color", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String getColorType() throws JsonProcessingException {
 		

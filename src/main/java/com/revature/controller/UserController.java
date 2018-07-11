@@ -19,7 +19,6 @@ public class UserController {
 	UserService us;
 	
 	@RequestMapping(value="/user", method=RequestMethod.GET)
-	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String employeeRespondWithList() throws JsonProcessingException {
 		return om.writeValueAsString(us.listAll().stream().map(u->new UserAndRole(u)).toArray());
