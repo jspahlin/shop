@@ -59,6 +59,7 @@ public class LoginController {
 	public String doLogin(@RequestBody UserPass up, HttpSession httpSession,
 			HttpServletResponse response) throws JsonProcessingException {
 		Login user = us.login(up.getUsername(), up.getPassword());
+		System.out.println(up.getUsername() + " " + up.getPassword());
 		if(user != null) {
 			httpSession.setAttribute("currentUser", user);
 			return om.writeValueAsString(new UserAndRole(user));
