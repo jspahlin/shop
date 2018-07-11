@@ -20,6 +20,7 @@ import com.revature.services.UserService;
 @Controller
 public class LoginController {
 	
+	private static final String CURRENT_USER = "currentUser";
 	private ObjectMapper om = new ObjectMapper();
 	@Autowired
 	UserService us;
@@ -55,7 +56,7 @@ public class LoginController {
 		Login user = us.login(up.getUsername(), up.getPassword());
 		System.out.println(up.getUsername() + " " + up.getPassword());
 		if(user != null) {
-			httpSession.setAttribute("currentUser", user);
+			httpSession.setAttribute(CURRENT_USER, user);
 			return om.writeValueAsString(new UserAndRole(user));
 		} else {
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -66,7 +67,7 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	@ResponseBody
 	public String getSession(HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
-		Login user = (Login) httpSession.getAttribute("currentUser");
+		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if(user != null) {
 			return om.writeValueAsString(new UserAndRole(user));
 		} else {
@@ -78,7 +79,7 @@ public class LoginController {
 	@RequestMapping(value="/account/new/login", method=RequestMethod.POST)
 	@ResponseBody
 	public String makeNewAccount(@RequestBody Login login, HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
-		Login user = (Login) httpSession.getAttribute("currentUser");
+		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if (user != null) { // can't make a new account if you are already logged in.
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 			return "";
@@ -107,7 +108,6 @@ class UserPass {
 	private String password;
 	public UserPass() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public UserPass(String username, String password) {
 		super();
