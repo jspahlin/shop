@@ -1,11 +1,15 @@
 package com.revature.controller;
 
+import java.util.HashSet;
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Inventory;
+import com.revature.beans.Login;
 import com.revature.services.InventoryService;
 
 @Controller
@@ -33,6 +38,13 @@ public class InventoryController {
 		return om.writeValueAsString(is.topSeller());
 	}
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
+	@ResponseBody
+	public String get (@PathVariable int id, HttpSession httpSession) throws JsonProcessingException {
+		return om.writeValueAsString(is.get(id));
+	}
+	
+	@RequestMapping(value = "/inventory/{id}", method=RequestMethod.POST)
+	@CrossOrigin(origins="http://localhost:4200")
 	@ResponseBody
 	public String get (@PathVariable int id, HttpSession httpSession) throws JsonProcessingException {
 		return om.writeValueAsString(is.get(id));
