@@ -13,12 +13,21 @@ import com.revature.data.InvoiceLineDao;
 public class InvoiceServiceImpl implements InvoiceService {
 	@Autowired
 	private InvoiceDao id;
-	@Autowired
-	private InvoiceLineDao ild;
 
 	@Override
-	public Invoice getInvoice(Customer cust) {
+	public Invoice getInvoiceByCustomer(Customer cust) {
 		Invoice invoice = this.id.getByUser(cust);		
+		return invoice;
+	}
+	
+	@Override
+	public Invoice save(Invoice invoice) {
+		return id.save(invoice);
+	}
+	
+	@Override
+	public Invoice getInvoice(int id) {
+		Invoice invoice = this.id.get(id);
 		return invoice;
 	}
 	

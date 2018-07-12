@@ -20,6 +20,13 @@ public class InvoiceLineHibernate implements InvoiceLineDao, HibernateSession {
 	public InvoiceLine get(int id) {
 		return (InvoiceLine) session.get(InvoiceLine.class, id);
 }
+	@Override
+	public InvoiceLine getByID(int id) {
+		Query<InvoiceLine> q = session.createQuery("From com.revature.beans.InvoiceLine i where i.id=:id", InvoiceLine.class);
+		q.setParameter("id", id);
+
+		return q.getSingleResult();
+}
 
 	@Override
 	public InvoiceLine update(InvoiceLine invoiceLine) {
