@@ -9,12 +9,11 @@ import com.revature.beans.Login;
 
 @Component
 public class UserAndRole {
-	public Login user;
-	public String role;
+	private Login user;
+	private String role;
 	
 	public UserAndRole() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	UserAndRole(Login user) {
