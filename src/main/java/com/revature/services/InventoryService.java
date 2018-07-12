@@ -9,4 +9,5 @@ public interface InventoryService {
 	public Inventory get(int id);
 	public List<Inventory> search(String text);
 	public Inventory save(Inventory inventory);
+	public Inventory topSeller();
 }

@@ -37,4 +37,10 @@ public class InventoryServiceImpl implements InventoryService {
 		return id.search(text);
 	}
 
+
+	@Override
+	public Inventory topSeller() {
+		return id.topSeller();
+	}
+
 }

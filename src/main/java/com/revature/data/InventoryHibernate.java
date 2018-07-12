@@ -53,4 +53,15 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	public Inventory topSeller() {
+		return list().stream().reduce((a,b)->{
+			if(a.getAmountSold() > b.getAmountSold()) {
+				return a;
+			} else {
+				return b;
+			}
+		}).orElse(null);
+	}
+
 }

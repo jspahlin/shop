@@ -27,6 +27,11 @@ public class InventoryController {
 	public String search(@PathVariable String text) throws JsonProcessingException {
 		return om.writeValueAsString(is.search(text));
 	}
+	@RequestMapping(value="/top", method=RequestMethod.GET)
+	@ResponseBody
+	public String top() throws JsonProcessingException {
+		return om.writeValueAsString(is.topSeller());
+	}
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
 	@ResponseBody
 	public String get (@PathVariable int id, HttpSession httpSession) throws JsonProcessingException {
