@@ -37,6 +37,11 @@ public class CardServiceImpl implements CardService {
 	}
 	
 	@Override
+	public Card getCardByID(int id) {
+		return ld.get(id);
+	}
+	
+	@Override
 	public Card save(Card card) { // Cards can have stuff in them that is already in the db...
 		if(crd.findByName(card.getRarity().getName()) != null) {
 			card.setRarity(crd.findByName(card.getRarity().getName()));
