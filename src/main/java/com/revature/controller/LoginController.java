@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.beans.Admin;
+import com.revature.beans.CardRarity;
 import com.revature.beans.Customer;
 import com.revature.beans.Login;
 import com.revature.data.CardRarityDao;
@@ -28,26 +31,21 @@ public class LoginController {
 	@Autowired
 	CardRarityDao crd;
 	
-	/*
+/*
 	@PostConstruct
 	public void doSomethingAfterStartup() {
 		Login user = new Admin(0, "admin", "password", "jspahlin+admin@gmail.com", "123 Fake RD, Alaska", "123 Fake RD, Alaska");
 		us.addUser(user);
-		user = new Employee(0, "employee", "password", "jspahlin+employee@gmail.com", "123 Fake RD, Alaska", "123 Fake RD, Alaska");
-		us.addUser(user);
+		//user = new Employee(0, "employee", "password", "jspahlin+employee@gmail.com", "123 Fake RD, Alaska", "123 Fake RD, Alaska");
+		//us.addUser(user);
 		user = new Customer(0, "customer", "password", "jspahlin+customer@gmail.com", "123 Fake RD, Alaska", "123 Fake RD, Alaska");
 		us.addUser(user);
 		user = new Login(0, "login", "password", "jspahlin+login@gmail.com");
 		us.addUser(user);
 		
-		crd.save(new CardRarity(0, "Common"));
-		crd.save(new CardRarity(0, "Uncommon"));
-		crd.save(new CardRarity(0, "Rare"));
-		crd.save(new CardRarity(0, "Mythic"));
-		
 	    System.out.println("hello world, I have just started up");
-	}
-	*/
+	}*/
+	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	//@CrossOrigin(origins="http://localhost:4200")

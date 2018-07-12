@@ -1,8 +1,5 @@
 package com.revature.data;
 
-import java.util.List;
-import java.util.Set;
-
 import com.revature.beans.Customer;
 import com.revature.beans.Login;
 

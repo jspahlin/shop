@@ -1,6 +1,7 @@
 package com.revature.data;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -52,6 +53,25 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 	@Override
 	public List<Inventory> list() {
 		return (List<Inventory>) session.createQuery("From com.revature.beans.Inventory", Inventory.class).list();
+	}
+
+	@Override
+	public List<Inventory> search(String text) {
+		List<Inventory> result = session.createQuery("From com.revature.beans.Inventory", Inventory.class).list();
+		return result.stream().filter(inv->inv.getCard().getName().toLowerCase()
+				.contains(text.toLowerCase()))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public Inventory topSeller() {
+		return list().stream().reduce((a,b)->{
+			if(a.getAmountSold() > b.getAmountSold()) {
+				return a;
+			} else {
+				return b;
+			}
+		}).orElse(null);
 	}
 
 }

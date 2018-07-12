@@ -7,7 +7,6 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardColor;
-import com.revature.beans.CardRarity;
 
 @Component
 public class CardColorHibernate implements CardColorDao, HibernateSession {
