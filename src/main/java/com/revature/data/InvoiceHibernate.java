@@ -1,7 +1,6 @@
 package com.revature.data;
 
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -9,14 +8,10 @@ import org.springframework.stereotype.Component;
 
 import com.revature.beans.Customer;
 import com.revature.beans.Invoice;
-import com.revature.beans.InvoiceLine;
-import com.revature.beans.Login;
 
 @Component
 public class InvoiceHibernate implements InvoiceDao, HibernateSession {
 	private Session session;
-	private CustomerDao cd;
-	private LoginDao ld;
 	
 	@Override
 	public void setSession(Session session) {

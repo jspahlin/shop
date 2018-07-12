@@ -50,7 +50,7 @@ public class AuthRoleAspect {
 	public Object forceEmployeeLogin(ProceedingJoinPoint pjp) throws Throwable { // NOSONAR
 		Object obj = null;
 		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
-		if(user instanceof Employee) {
+		if(user instanceof Employee || user instanceof Admin) {
 			obj = pjp.proceed();
 		} else {			
 			throw new UnauthorizedException();

@@ -7,12 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.Card;
-import com.revature.data.CardColorDao;
-import com.revature.data.CardCreatureTypeDao;
 import com.revature.data.CardDao;
 import com.revature.data.CardRarityDao;
 import com.revature.data.CardSetDao;
-import com.revature.data.CardTypeDao;
 
 @Component
 @Service
@@ -20,15 +17,9 @@ public class CardServiceImpl implements CardService {
 	@Autowired
 	private CardDao ld;
 	@Autowired
-	private CardColorDao ccd;
-	@Autowired
-	private CardCreatureTypeDao cctd;
-	@Autowired
 	private CardRarityDao crd;
 	@Autowired
 	private CardSetDao csd;
-	@Autowired
-	private CardTypeDao ctd;
 	
 	
 	@Override

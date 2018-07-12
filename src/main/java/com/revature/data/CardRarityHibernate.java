@@ -7,7 +7,6 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.CardRarity;
-import com.revature.beans.Login;
 
 @Component
 public class CardRarityHibernate implements CardRarityDao, HibernateSession {

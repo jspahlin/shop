@@ -10,4 +10,5 @@ public interface InventoryDao {
 	public void delete(Inventory inventory);
 	
 	public List<Inventory> list();
+	public List<Inventory> search(String text);
 }

@@ -22,7 +22,11 @@ public class InventoryController {
 	
 	@Autowired
 	InventoryService is;
-	
+	@RequestMapping(value = "/search/{text}", method=RequestMethod.GET)
+	@ResponseBody
+	public String search(@PathVariable String text) throws JsonProcessingException {
+		return om.writeValueAsString(is.search(text));
+	}
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
 	@ResponseBody
 	public String get (@PathVariable int id, HttpSession httpSession) throws JsonProcessingException {

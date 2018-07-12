@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.beans.Customer;
 import com.revature.beans.Invoice;
-import com.revature.beans.Login;
 import com.revature.data.InvoiceDao;
-import com.revature.data.InvoiceLineDao;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
