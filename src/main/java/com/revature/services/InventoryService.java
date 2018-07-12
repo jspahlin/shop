@@ -8,11 +8,9 @@ import com.revature.beans.Inventory;
 public interface InventoryService {
 	public List<Inventory> list();
 	public Inventory get(int id);
-<<<<<<< HEAD
 	public Inventory getByCard(Card card);
 	public Inventory save(Inventory inventory);
 	public Inventory update(Inventory inventory);
-	public List<Inventory> search(String text);
 	public List<Inventory> search(String text);
 	public Inventory topSeller();
 }
