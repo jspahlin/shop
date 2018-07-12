@@ -30,5 +30,15 @@ public class InventoryServiceImpl implements InventoryService {
 	public Inventory get(int id) {
 		return this.id.get(id);
 	}
+	
+	@Override
+	public Inventory getByCard(Card card) {
+		return id.getByCard(card);
+	}
+	
+	@Override
+	public Inventory update(Inventory inventory) {
+		return id.update(inventory);
+	}
 
 }

@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,11 @@ public class InvoiceServiceImpl implements InvoiceService {
 	public Invoice getInvoice(int id) {
 		Invoice invoice = this.id.get(id);
 		return invoice;
+	}
+	
+	@Override
+	public List<Invoice> getAllInvoice(){
+		return id.list();
 	}
 	
 	@Override

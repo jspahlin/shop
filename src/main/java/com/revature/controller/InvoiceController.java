@@ -20,10 +20,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Card;
 import com.revature.beans.Customer;
+import com.revature.beans.Inventory;
 import com.revature.beans.Invoice;
 import com.revature.beans.InvoiceLine;
 import com.revature.beans.Login;
 import com.revature.services.CardService;
+import com.revature.services.InventoryService;
 import com.revature.services.InvoiceLineService;
 import com.revature.services.InvoiceService;
 
@@ -38,6 +40,9 @@ public class InvoiceController {
 	InvoiceLineService ils;
 	
 	@Autowired
+	InventoryService ivs;
+	
+	@Autowired
 	CardService cs;
 	
 	@RequestMapping(value = "/cart", method=RequestMethod.GET)
@@ -48,6 +53,12 @@ public class InvoiceController {
 		Invoice invoice = is.getInvoiceByCustomer(cust);
 		
 		return om.writeValueAsString(invoice);
+	}
+	
+	@RequestMapping(value = "/cart/get", method=RequestMethod.GET)
+	@ResponseBody
+	public String getAllInvoice (HttpSession httpSession) throws JsonProcessingException {
+		return om.writeValueAsString(is.getAllInvoice());
 	}
 	
 	@RequestMapping(value = "/cart/add", method=RequestMethod.POST)
@@ -85,7 +96,43 @@ public class InvoiceController {
 		Customer cust = (Customer) user;
 		Invoice invoice = is.getInvoiceByCustomer(cust);
 		
-		return om.writeValueAsString(invoice);		
+		return om.writeValueAsString(invoice);
+	}
+	
+	@RequestMapping(value = "/cart/approve", method=RequestMethod.POST)
+	@ResponseBody
+	public String approveInvoice (@RequestBody Variables variables, HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
+		Invoice invoice = is.getInvoice(variables.getCartID());
+		Inventory inventory = null;
+		Card card = null;
+		int stock = 0, buy = 0, sold = 0;
+		
+		
+		Set<InvoiceLine> iLines = invoice.getInvoiceLines();
+		
+		for(InvoiceLine iLine : iLines) {
+			card = iLine.getCard();
+			inventory = ivs.getByCard(card);
+			
+			stock = inventory.getQuantity();
+			sold = inventory.getAmountSold();
+			buy = iLine.getQuantity();
+			
+			if(buy < stock)
+				response.setStatus(HttpServletResponse.SC_CONFLICT);
+			else {
+				stock = stock - buy;
+				inventory.setQuantity(stock);
+				sold = sold + buy;
+				inventory.setAmountSold(sold);
+
+				invoice.setStatus("SHIPPED");
+				
+				ivs.update(inventory);
+				is.update(invoice);		
+			}
+		}
+		return om.writeValueAsString(is.getAllInvoice());		
 	}
 	
 	@RequestMapping(value = "/cart/item/remove/{lineID}", method=RequestMethod.DELETE)
