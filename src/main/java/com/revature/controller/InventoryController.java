@@ -32,7 +32,7 @@ public class InventoryController {
 	@Autowired
 	InventoryService is;
 	
-	@RequestMapping(value = "/inventory/{id}", method=RequestMethod.POST)
+	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
 	@ResponseBody
 	public String get (@PathVariable int id, HttpSession httpSession) throws JsonProcessingException {
 		return om.writeValueAsString(is.get(id));
