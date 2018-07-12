@@ -12,5 +12,6 @@ public interface InventoryService {
 	public Inventory save(Inventory inventory);
 	public Inventory update(Inventory inventory);
 	public List<Inventory> search(String text);
+	public List<Inventory> search(String text);
 	public Inventory topSeller();
 }
