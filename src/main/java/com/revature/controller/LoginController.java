@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.beans.Customer;
 import com.revature.beans.Login;
 import com.revature.data.CardRarityDao;
 import com.revature.services.UserService;
@@ -77,7 +78,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/account/new/login", method=RequestMethod.POST)
 	@ResponseBody
-	public String makeNewAccount(@RequestBody Login login, HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
+	public String makeNewAccount(@RequestBody Customer login, HttpSession httpSession, HttpServletResponse response) throws JsonProcessingException {
 		Login user = (Login) httpSession.getAttribute(CURRENT_USER);
 		if (user != null) { // can't make a new account if you are already logged in.
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
