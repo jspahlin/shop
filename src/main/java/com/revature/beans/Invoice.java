@@ -1,6 +1,8 @@
 package com.revature.beans;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,8 +42,14 @@ public class Invoice {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Set<InvoiceLine> getInvoiceLines() {
-		return invoiceLines;
+	public List<InvoiceLine> getInvoiceLines() {
+		return invoiceLines.stream().sorted((a,b)->{
+			if(a.getId()>b.getId()) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}).collect(Collectors.toList());
 	}
 	public void setInvoiceLines(Set<InvoiceLine> invoiceLines) {
 		this.invoiceLines = invoiceLines;

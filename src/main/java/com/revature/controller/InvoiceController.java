@@ -1,6 +1,6 @@
 package com.revature.controller;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -106,7 +106,7 @@ public class InvoiceController {
 		int stock = 0, buy = 0, sold = 0;
 		
 		
-		Set<InvoiceLine> iLines = invoice.getInvoiceLines();
+		List<InvoiceLine> iLines = invoice.getInvoiceLines();
 		
 		for(InvoiceLine iLine : iLines) {
 			card = iLine.getCard();
