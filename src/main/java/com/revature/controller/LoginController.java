@@ -1,6 +1,7 @@
 package com.revature.controller;
 
-import javax.annotation.PostConstruct;
+import java.util.HashSet;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.beans.Admin;
 import com.revature.beans.Customer;
+import com.revature.beans.Invoice;
+import com.revature.beans.InvoiceLine;
 import com.revature.beans.Login;
 import com.revature.data.CardRarityDao;
+import com.revature.services.InvoiceService;
 import com.revature.services.UserService;
 
 @Controller
@@ -29,7 +32,8 @@ public class LoginController {
 	UserService us;
 	@Autowired
 	CardRarityDao crd;
-	
+	@Autowired
+	InvoiceService is;
 /*
 	@PostConstruct
 	public void doSomethingAfterStartup() {
@@ -82,10 +86,13 @@ public class LoginController {
 			return "";
 		} else {
 			Login newLogin = us.addUser(login);
+			
 			if(newLogin==null) {
 				response.setStatus(HttpServletResponse.SC_CONFLICT);
 				return "";
 			}
+			Invoice inv = new Invoice(0, new HashSet<InvoiceLine>(), (Customer) newLogin, "CURRENT");
+			is.save(inv);
 			return om.writeValueAsString(new UserAndRole(newLogin));
 		}
 	}

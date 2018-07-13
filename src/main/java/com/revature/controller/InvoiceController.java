@@ -159,7 +159,7 @@ public class InvoiceController {
 		Invoice newInvoice = new Invoice();
 		newInvoice.setCustomerId(cust);
 		newInvoice.setStatus("CURRENT");
-		newInvoice.setId(1);
+		newInvoice.setId(0); // Id has to be 0, it's transiant
 		newInvoice.setInvoiceLines(null);
 		
 		is.save(newInvoice);
